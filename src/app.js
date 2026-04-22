@@ -59,7 +59,7 @@ connectBtn.addEventListener("click", async () => {
 
         characteristic = await service.getCharacteristic(CHARACTERISTIC_UUID);
 
-        /* await characteristic.startNotifications();
+        await characteristic.startNotifications();
 
         characteristic.addEventListener(
             "characteristicvaluechanged",
@@ -79,7 +79,7 @@ connectBtn.addEventListener("click", async () => {
             }
         );
 
-        */
+        
 
         statusLbl.textContent = "Status: Connected";
         statusLbl.className = "status connected";
