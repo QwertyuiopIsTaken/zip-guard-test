@@ -59,11 +59,45 @@ connectBtn.addEventListener("click", async () => {
 
         characteristic = await service.getCharacteristic(CHARACTERISTIC_UUID);
 
+        await characteristic.startNotifications();
+
+        characteristic.addEventListener(
+            "characteristicvaluechanged",
+            event => {
+                let value = new TextDecoder().decode(
+                    event.target.value
+                );
+
+                console.log("GPS received:", value);
+
+                let coords = value.split(",");
+
+                let lat = parseFloat(coords[0]);
+                let lng = parseFloat(coords[1]);
+
+                updateLocation(lat, lng);
+            }
+        );
+
         statusLbl.textContent = "Status: Connected";
         statusLbl.className = "status connected";
 
         lockBtn.disabled = false;
         unlockBtn.disabled = false;
+
+        // Disconnect listener
+
+        device.addEventListener("gattserverdisconnected", () => {
+
+            statusLbl.textContent = "Status: Disconnected";
+            statusLbl.className = "status disconnected";
+
+            lockBtn.disabled = true;
+            unlockBtn.disabled = true;
+
+            console.log("BLE lost connection.");
+
+        });
 
     } catch (error) {
 
@@ -111,16 +145,3 @@ unlockBtn.addEventListener("click", async () => {
 
     lockLbl.textContent = "Locking Mode: DISABLED";
 });
-
-device.addEventListener("gattserverdisconnected", () => {
-
-    statusLbl.textContent = "Status: Disconnected";
-    statusLbl.className = "status disconnected";
-
-    lockBtn.disabled = true;
-    unlockBtn.disabled = true;
-
-    console.log("BLE lost connection.");
-
-});
-
