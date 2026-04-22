@@ -65,31 +65,9 @@
 
         function updateLocation(lat, lng)
         {
-        marker.setLatLng([lat, lng]);
-        map.setView([lat, lng], 15);
+            marker.setLatLng([lat, lng]);
+            map.setView([lat, lng], 15);
         }
-
-
-        /* BLE RECEIVE GPS DATA */
-
-        characteristic.addEventListener(
-        'characteristicvaluechanged',
-        event =>
-        {
-        let value = new TextDecoder().decode(event.target.value);
-
-        console.log("GPS received:", value);
-
-        let coords = value.split(",");
-
-        let lat = parseFloat(coords[0]);
-        let lng = parseFloat(coords[1]);
-
-        updateLocation(lat, lng);
-
-        });
-
-        characteristic.startNotifications();
 
     </script>
 
