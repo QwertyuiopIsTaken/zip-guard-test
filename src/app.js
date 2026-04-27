@@ -59,27 +59,6 @@ connectBtn.addEventListener("click", async () => {
 
         characteristic = await service.getCharacteristic(CHARACTERISTIC_UUID);
 
-        await characteristic.startNotifications();
-
-        characteristic.addEventListener(
-            "characteristicvaluechanged",
-            event => {
-                let value = new TextDecoder().decode(
-                    event.target.value
-                );
-
-                console.log("GPS received:", value);
-
-                let coords = value.split(",");
-
-                let lat = parseFloat(coords[0]);
-                let lng = parseFloat(coords[1]);
-
-                updateLocation(lat, lng);
-            }
-        );
-
-        
 
         statusLbl.textContent = "Status: Connected";
         statusLbl.className = "status connected";
