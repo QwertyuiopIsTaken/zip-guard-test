@@ -12,8 +12,6 @@ body {
 
 }
 
-
-
 header {
 
     width: 100%;
@@ -31,13 +29,20 @@ header {
 header h1 {
 
     margin: 15px;
-
-    font-size: 36px;
+    margin-left: 30px;
+    font-size: 30px;
 
 }
 
+footer {
 
-.status {
+    text-align: center;
+    border-top: 2px solid #628bb4;
+    font-size: 12px;
+
+}
+
+#status {
 
     padding: 8px 12px;
     border-radius: 10px;
@@ -111,9 +116,7 @@ header h1 {
 .controls {
 
     margin-top: 40px;
-
     display: flex;
-
     gap: 20px;
 
 }
@@ -122,15 +125,10 @@ header h1 {
 .btn {
 
     width: 150px;
-
     padding: 18px;
-
     font-size: 20px;
-
     border-radius: 12px;
-
     border: none;
-
     cursor: pointer;
 
 }
@@ -151,11 +149,41 @@ header h1 {
 
 }
 
-.lockLbl {
+#lockLbl {
 
     margin-top: 20px;
     font-size: 20px;
     text-align: center;
+
+}
+
+#trackLbl {
+
+    margin-top: 120px;
+    font-size: 24px;
+    text-align: center;
+    padding: 12px;
+    padding-left: 100px;
+    padding-right: 100px;
+    background-color: rgb(41, 110, 171)
+
+}
+
+.soundBtn {
+
+    background: #bc5d15;
+    color: white;
+    margin-top: 100px;
+    width: 300px;
+
+}
+
+#mapLbl {
+
+    margin-top: 50px;
+    font-size: 35px;
+    text-align: center;
+    color:rgb(170, 255, 127)
 
 }
 
@@ -169,7 +197,7 @@ input[type="text"]:focus {
 
 input[type="text"], textarea {
     font-size: 20px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .btn:disabled {
