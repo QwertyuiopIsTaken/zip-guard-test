@@ -87,7 +87,7 @@ connectBtn.addEventListener("click", async () => {
         statusLbl.className = "status connecting";
 
         device = await navigator.bluetooth.requestDevice({
-            filters: [{ name: "ZipGuard" }],
+            acceptAllDevices: true,
             optionalServices: [SERVICE_UUID]
         });
 
